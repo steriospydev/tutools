@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "Creating working directory."
+mkdir project
+cd project
+
+echo "Creating new environment...."
+python3 -m venv env 
+echo "Done"
+
+echo "Activating new environment..."
+source env/bin/activate
+echo "Done Activating."
+
+echo "Installing Fresh Django installation via pip."
+pip install django
+
+echo "Finish Installation!.Continue to creating a new project named 'demo'"
+django-admin startproject config .
+
+echo "Make Migrations"
+python manage.py makemigrations
+python manage.py migrate
+
+echo "Open Server and browser!"
+python manage.py runserver
+python3 -m webbrowser http://127.0.0.1:8000/
+
+exit 0

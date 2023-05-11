@@ -1,0 +1,5 @@
+!#/bin/bash
+
+# dpkg --list | egrep -i --color 'linux-image|linux-headers'
+# only list installed kernels #
+dpkg --list | grep -i -E --color 'linux-image|linux-kernel' | grep '^ii'

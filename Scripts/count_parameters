@@ -1,0 +1,9 @@
+#!/bin/sh 
+
+echo " No of Parameters: $#"
+for i in $*; do
+	echo $i
+done
+
+
+

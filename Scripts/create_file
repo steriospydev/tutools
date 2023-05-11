@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Check the number of arguments
+if [ $# -gt 2 ] ;then
+	echo "usage: create_file filename [extension]"
+	exit 1
+elif [ $# -eq 0 ] ;then
+	echo "usage: create_file filename [extension]"
+	exit 1
+fi
+
+filename="$1"
+extension="$2"
+
+# Append the extension to the filename
+if [ -n "$extension" ]; then
+    filename="$filename.$extension"
+fi
+
+# Check if the file already exists
+if [ -f "$filename" ]; then
+	echo "File '$filename' already exists. Overwrite? Yy/Nn"
+	read answer
+	if [[ $answer =~ ^[Yy]$ ]]; then
+		> "$filename"
+		echo "File '$filename' overwritten."
+	else
+		echo "File not overwritten."
+		exit 1
+	fi
+else
+	touch "$filename"
+	echo "File '$filename' created."
+fi

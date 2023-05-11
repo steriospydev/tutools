@@ -1,0 +1,4 @@
+!#bin/bash
+
+# Clear cashe from content that has now been accesed for 1 year;
+find ~/.cache -depth -type f -atime +365 
